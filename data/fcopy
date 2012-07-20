@@ -1,0 +1,12 @@
+DerpyOS_Shell_Commands["fcopy"] = function()
+  shell.run("/sys/bin/floppycopy/fc")
+end
+
+--[[
+How to add commands to shell:
+
+DerpyOS_Shell_Commands["command"] = function()
+  do.stuff.here()
+end
+
+]]--

@@ -1,0 +1,33 @@
+print(" __________________________ ")
+print("|  FloppyCopy version 0.1  |")
+print("|                          |")
+print("|  Made by ImaCreepybrony  |")
+print("|__________________________|")
+
+if fs.exists("disk") then
+  fs.delete("/sys/bin/floppycopy/temp")
+  fs.delete("/sys/bin/floppycopy/startup")
+  print("Please select an option: ")
+  print("1: Copy disk")
+  print("2: Rip disk")
+  t = io.read()
+  if t == "1" then
+    fs.copy("disk/data", "/sys/bin/floppycopy/temp")
+    fs.copy("disk/startup", "/sys/bin/floppycopy/startup")
+    print("Please insert destination disk, and type y to continue")
+    t = io.read()
+    if t == "y" then
+    fs.copy("/sys/bin/floppycopy/temp", "disk/data")
+    fs.copy("/sys/bin/floppycopy/startup", "disk/startup")
+    print("Copy complete")
+    sleep(3)
+    end
+elseif t == "2" then
+  print("Please type the location you wish to rip the disk: ")
+  t = io.read()
+  fs.copy("disk", t)
+  print("Rip complete")
+  sleep(5)
+  os.reboot()
+  end
+end
